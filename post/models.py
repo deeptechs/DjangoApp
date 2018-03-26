@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 
@@ -10,3 +10,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        # post uygulamasındaki detail url i ni id parametresini vererek çağırdığımızı belirtiyoruz.
+        return reverse('post_app:detail', kwargs={'id': self.id})

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Tüm Postlar:<br><br>
+
+{% for post in postlar %}
+{{ post.id }}<br>
+    <a href={{ post.get_absolute_url }}>{{ post.title }}</a>
+{{ post.title }}<br>
+{{ post.content }}<br>
+{{ post.publish_date }}<br><br>
+{% endfor %}
+
+
+</body>
+</html>

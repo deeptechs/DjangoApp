@@ -19,7 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # post ile başlayan istekler geldiğinde git post içindeki urls.py içinde ara gidilecek yeri
     path('post/', include('post.urls')),
+    # Ana sayfaya istek geldiğinde home.urls dosyasında ara gidilecek yeri.
     path('', include('home.urls')),
 
 ]

@@ -1,4 +1,3 @@
-
 {% load static %}
 
 <!DOCTYPE html>
@@ -6,11 +5,11 @@
 <head>
     {# Responsive tasarım için viewport ve sonrası eklendi #}
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title> {% block title %} My Django {% endblock %}</title>
     {# Bootsratp css i import edildi #}
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <title> {% block title %}
-    My Django
-    {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
 <body>
 
@@ -23,6 +22,7 @@
 {% endblock %}
 
 {# Javascript js si import edildi #}
+<script src="{% static 'js/jquery-min.js' %}"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 
 {% block title %}
@@ -13,19 +12,19 @@
 {% endblock %}
 
 {% block body %}
-<form method="POST">
-    <h1> FORMS </h1>
-    {% csrf_token %}
-    {{ form.as_p }}
+    <form method="POST">
+        <h1> FORMS </h1>
+        {% csrf_token %}
+        {{ form.as_p }}
 
-    {% if 'create' in request.path %}
-        <input type="submit" value="Kaydet">
-    {% elif 'update' in request.path %}
-        <input type="submit" value="Güncelle">
-    {% elif 'delete' in request.path %}
-        <input type="submit" value="Sil">
-    {% endif %}
+        {% if 'create' in request.path %}
+            <input type="submit" value="Kaydet">
+        {% elif 'update' in request.path %}
+            <input type="submit" value="Güncelle">
+        {% elif 'delete' in request.path %}
+            <input type="submit" value="Sil">
+        {% endif %}
 
-</form>
+    </form>
 {% endblock %}
 

@@ -1,8 +1,9 @@
 from django import forms
+
 from .models import Post
 
-class PostForm(forms.ModelForm):
 
+class PostForm(forms.ModelForm):
     # Bu form modeli, Post modelimiz icimn yapılıyor, bu sebeple referans olarak Post modelimizi veriyoruz
     class Meta:
         model = Post

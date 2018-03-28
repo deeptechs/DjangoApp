@@ -1,19 +1,18 @@
-
 {% extends 'base.html' %}
 
 {% block title %}
-{{ block.super }} - Postlar
+    {{ block.super }} - Postlar
 {% endblock %}
 
 {% block body %}
-Tüm Postlar:<br><br>
+    Tüm Postlar:<br><br>
 
-{% for post in postlar %}
-{{ post.id }}<br>
-    <a href={{ post.get_absolute_url }}>{{ post.title }}</a><br>
-{{ post.content }}<br>
-{{ post.publish_date }}<br><br>
-{% endfor %}
+    {% for post in postlar %}
+        {{ post.id }}<br>
+        <a href={{ post.get_absolute_url }}>{{ post.title }}</a><br>
+        {{ post.content }}<br>
+        {{ post.publish_date }}<br><br>
+    {% endfor %}
 
 {% endblock %}
 

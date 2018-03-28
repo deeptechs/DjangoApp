@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
-
 # My models imports
 from .models import Post
+
+
+# Register your models here.
 
 
 # Models' admin panel classes

@@ -1,8 +1,9 @@
 from django.urls import path
+
 from post.views import *
 
 # Url name ler karışmasın diye, app_name tanımlanıyor
-app_name ='post_app'
+app_name = 'post_app'
 
 urlpatterns = [
 
@@ -14,7 +15,3 @@ urlpatterns = [
     path('<int:id>/delete/', post_delete, name='delete'),
 
 ]
-
-
-
-

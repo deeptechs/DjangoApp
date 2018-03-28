@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }}-
+    {% if 'create' in request.path %}
+        Oluştur
+    {% elif 'update' in request.path %}
+        Güncelle
+    {% elif 'delete' in request.path %}
+        Sil
+    {% endif %}
+{% endblock %}
+
+{% block body %}
 <form method="POST">
     <h1> FORMS </h1>
     {% csrf_token %}
@@ -20,6 +27,5 @@
     {% endif %}
 
 </form>
+{% endblock %}
 
-</body>
-</html>

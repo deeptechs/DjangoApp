@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
+{% extends 'base.html' %}
+
+{% block title %}
+{{ block.super }} - Postlar
+{% endblock %}
+
+{% block body %}
 Tüm Postlar:<br><br>
 
 {% for post in postlar %}
 {{ post.id }}<br>
-    <a href={{ post.get_absolute_url }}>{{ post.title }}</a>
-{{ post.title }}<br>
+    <a href={{ post.get_absolute_url }}>{{ post.title }}</a><br>
 {{ post.content }}<br>
 {{ post.publish_date }}<br><br>
 {% endfor %}
 
+{% endblock %}
 
-</body>
-</html>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, HttpResponseRedirect, redirect
 from .models import Post
 from .forms import PostForm
+from django.contrib import messages
 # Create your views here.
 
 
@@ -22,6 +23,7 @@ def post_create(request):
     form = PostForm(request.POST or None)
     if form.is_valid():
        post =  form.save()
+       messages.success(request, 'Kayıt başarılı bir şekilde oluşturuldu')
        # İlgili postun detay sayfasına yönlendirme yapıyoruz
        return HttpResponseRedirect(post.get_absolute_url())
     context = {
@@ -39,6 +41,7 @@ def post_update(request, id):
     form = PostForm(request.POST or None, instance=post)
     if form.is_valid():
        post =  form.save()
+       messages.success(request, 'Kayıt başarılı bir şekilde güncellendi')
        # İlgili postun detay sayfasına yönlendirme yapıyoruz
        return HttpResponseRedirect(post.get_absolute_url())
     context = {
@@ -53,7 +56,7 @@ def post_delete(request, id):
     form = PostForm( instance=post)
     if request.method == 'POST':
         post.delete()
-        return HttpResponseRedirect('post:index')
+        return redirect('post_app:index')
     context = {
         'form': form,
     }

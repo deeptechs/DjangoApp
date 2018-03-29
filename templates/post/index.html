@@ -5,14 +5,29 @@
 {% endblock %}
 
 {% block body %}
-    Tüm Postlar:<br><br>
 
-    {% for post in postlar %}
-        {{ post.id }}<br>
-        <a href={{ post.get_absolute_url }}>{{ post.title }}</a><br>
-        {{ post.content }}<br>
-        {{ post.publish_date }}<br><br>
-    {% endfor %}
+    <div class="container">
+        {% for post in postlar %}
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-md-6 offset-3">
+                    <div class="card">
+                        {% if post.image %}
+                            <img class="card-img-top img-fluid" src="{{ post.image.url }}" alt="Card image cap" >
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.title }}
+                                <small style="color: #4e555b"> {{ post.publish_date|timesince }} önce</small>
+                            </h5>
+                            <p class="card-text">{{ post.content|truncatechars:150 }}</p>
+                            <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Detay</a>
+                            <a href="{{ post.get_update_url }}" class="btn btn-info">Guncelle</a>
+                            <a href="{{ post.get_delete_url }}" class="btn btn-danger">Sil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
 

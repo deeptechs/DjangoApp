@@ -22,7 +22,7 @@ def post_detail(request, id):
 
 
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save()
         messages.success(request, 'Kayıt başarılı bir şekilde oluşturuldu')
@@ -40,7 +40,7 @@ def post_update(request, id):
     # GET ile gelindiğinde sadece instance=post bilgileri ile form nesnesi oluşturulur
     # POST ile gelindiğinde istek ile gelen form bilgilerindeki parametreler ile form nesnesi oluşturulur, instance
     # verildği için de form bunu changed data ile tutarak güncelleme yapacağını anlar. Instance verilmez ise create olur
-    form = PostForm(request.POST or None, instance=post)
+    form = PostForm(request.POST or None,  request.FILES or None, instance=post)
     if form.is_valid():
         post = form.save()
         messages.success(request, 'Kayıt başarılı bir şekilde güncellendi')

@@ -23,6 +23,7 @@
                     {% csrf_token %}
                     <h1> Form </h1>
                     {{ form|crispy }}
+                    {{ form.media }}
                     {% if 'create' in request.path %}
                         <input class="btn btn-primary" type="submit" value="Kaydet">
                     {% elif 'update' in request.path %}

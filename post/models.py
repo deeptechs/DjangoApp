@@ -1,5 +1,7 @@
+
 from django.db import models
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 
 
@@ -7,8 +9,9 @@ from django.utils.text import slugify
 
 
 class Post(models.Model):
+    user = models.ForeignKey('auth.user', on_delete=models.CASCADE, verbose_name='Yazar')
     title = models.CharField(max_length=150, verbose_name='Başlık')
-    content = models.TextField(verbose_name='İçerik')
+    content = RichTextField(verbose_name='İçerik')
     publish_date = models.DateTimeField(verbose_name='Giriş Tarihi', auto_now_add=True)
     image = models.ImageField(null=True, blank=True)
     slug = models.SlugField(unique=True, editable=False, max_length=130)

@@ -27,7 +27,9 @@ def post_create(request):
 
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
-        post = form.save()
+        post = form.save(commit=False)
+        post.user = request.user
+        form.save()
         messages.success(request, 'Kayıt başarılı bir şekilde oluşturuldu')
         # İlgili postun detay sayfasına yönlendirme yapıyoruz
         return HttpResponseRedirect(post.get_absolute_url())

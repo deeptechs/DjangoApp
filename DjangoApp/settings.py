@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 3rd Party
     'crispy_forms',
     'django_cleanup',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -126,8 +127,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# js i bir yerden görüyor debug mode, buna gerek kalmıyor, production da ayarlanmalı
+# CKEDITOR_JQUERY_URL = os.path.join(STATIC_URL, 'js/jquery-min.js')
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': '300',
+        'width': '100%',
+    },
+    }

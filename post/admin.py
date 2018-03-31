@@ -9,9 +9,11 @@ from .models import Post
 
 # Models' admin panel classes
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'publish_date']
+    list_display = ['title', 'publish_date', 'slug']
     list_filter = ['title', 'publish_date']
     search_fields = ['title']
+    list_display_links = ['publish_date']
+    list_editable = ['title']
 
 
 # My models' admin panel's registers

@@ -9,7 +9,7 @@ from django.utils.text import slugify
 
 
 class Post(models.Model):
-    user = models.ForeignKey('auth.user', on_delete=models.CASCADE, verbose_name='Yazar')
+    user = models.ForeignKey('auth.user', verbose_name='Yazar', on_delete=models.CASCADE)
     title = models.CharField(max_length=150, verbose_name='Başlık')
     content = RichTextField(verbose_name='İçerik')
     publish_date = models.DateTimeField(verbose_name='Giriş Tarihi', auto_now_add=True)
@@ -53,3 +53,11 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-publish_date']
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=50, verbose_name='İsim')
+
+    content = models.TextField(verbose_name='Yorum')
+    created_date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey('post.Post', on_delete=models.CASCADE)

@@ -18,7 +18,8 @@
                             <h5 class="card-title">{{ post.title }}
                                 <small style="color: #4e555b"> {{ post.publish_date|timesince }} önce</small>
                             </h5>
-                            <h4>{{ post.user.get_full_name}}</h4>
+                            <h4>{{ post.user.get_full_name }}</h4>
+                            {# ßsafe filtresi içeriğin html olarak yorumlanmasını sağlar#}
                             <p class="card-text">{{ post.content|safe|truncatechars:150 }}</p>
                             <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Detay</a>
                             {% if request.user.is_authenticated %}

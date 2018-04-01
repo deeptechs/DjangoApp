@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect, Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
@@ -8,7 +9,13 @@ from .models import Post, Comment
 
 
 def post_index(request):
-    posts = Post.objects.all()
+
+    post_list = Post.objects.all()
+    paginator = Paginator(post_list, 2)  # Show 2 post per page
+
+    page = request.GET.get('sayfa')
+    posts = paginator.get_page(page)
+
     return render(request, 'post/index.html', {'postlar': posts})
 
 

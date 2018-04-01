@@ -38,8 +38,8 @@
                 <div class="pagination">
             <span class="step-links">
                 {% if postlar.has_previous %}
-                    <a href="?sayfa=1">&laquo; first</a>
-                    <a href="?sayfa={{ postlar.previous_page_number }}">previous</a>
+                    <a href="?sayfa=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">&laquo; first</a>
+                    <a href="?sayfa={{ postlar.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
                 {% endif %}
 
                 <span class="current">
@@ -47,8 +47,8 @@
                 </span>
 
                 {% if postlar.has_next %}
-                    <a href="?sayfa={{ postlar.next_page_number }}">next</a>
-                    <a href="?sayfa={{ postlar.paginator.num_pages }}">last &raquo;</a>
+                    <a href="?sayfa={{ postlar.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                    <a href="?sayfa={{ postlar.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
                 {% endif %}
             </span>
                 </div>

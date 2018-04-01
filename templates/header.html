@@ -19,8 +19,10 @@
 
             <!-- Arama Çubuğu  ilk yazılan bootstrap sitesinden alınan-->
             <form class="form-inline my-2 my-lg-0 mr-auto" role="search" method="GET" action="">
-                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search on blog" aria-label="Search" value="{{ request.GET.q }}">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="{% url 'home:home' %}">Ara</button>
+                <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search on blog"
+                       aria-label="Search" value="{{ request.GET.q }}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" href="{% url 'home:home' %}">Ara
+                </button>
             </form>
 
             <!-- Temel Sayfalar -->
@@ -32,6 +34,12 @@
                 <li class="nav-item"><a class="nav-link" href="{% url 'post_app:index' %}">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Hakkımda</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">İletişim</a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Çıkış</a></li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Giriş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register' %}">Kayıt</a></li>
+                {% endif %}
             </ul>
 
         </nav>

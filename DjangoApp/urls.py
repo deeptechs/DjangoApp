@@ -26,6 +26,8 @@ urlpatterns = [
     # Ana sayfaya istek geldiğinde home.urls dosyasında ara gidilecek yeri.
     path('', include('home.urls')),
 
+    path('accounts/', include('accounts.urls')),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
